@@ -12,8 +12,8 @@
     "url": "git+https://github.com/clapp-app/clapp_web.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Sven Hoffmann <sven-zo>",
+  "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/clapp-app/clapp_web/issues"
   },
