@@ -1,6 +1,7 @@
 # Clapp Web
 
 ![clapp logo](https://github.com/clapp-app/clapp_web/raw/master/misc/clapp-logo.jpg)
+
 [Try it out yourself!](https://clapp-app.github.io/)
 
 ## Current features
