@@ -20,7 +20,6 @@
   "homepage": "https://github.com/clapp-app/clapp_web#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
-    "sass": "^1.17.3"
   },
   "dependencies": {
     "howler": "^2.1.1",
