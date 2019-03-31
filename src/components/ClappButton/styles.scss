@@ -7,11 +7,8 @@
   border-radius: 50%;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-.circle > img {
-  width: 250px;
-  height: 250px;
-  transform: translate(6%, 10%);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/3d/Emojione_1F44F.svg');
+  background-size: 85%;
+  background-repeat: no-repeat;
+  background-position: 25%, center;
 }
