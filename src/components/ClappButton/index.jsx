@@ -40,16 +40,16 @@ const ClappButton = () => {
     loadSounds().then(() => setHidden(false))
   })
 
-  function mouseDown() {
+  function pointerDown() {
     setPressed(true)
     playSounds()
   }
 
-  function mouseUp() {
+  function pointerUp() {
     setPressed(false)
   }
 
-  function mouseLeave() {
+  function pointerLeave() {
     setPressed(false)
   }
 
@@ -65,9 +65,9 @@ const ClappButton = () => {
     <>
       <img className={styles.spinner} src={loader} />
       <Circle
-        onMouseDown={() => mouseDown()}
-        onMouseUp={() => mouseUp()}
-        onMouseLeave={() => mouseLeave()}
+        onPointerDown={() => pointerDown()}
+        onPointerUp={() => pointerUp()}
+        onPointerLeave={() => pointerLeave()}
         pose={pose}
         className={styles.circle}
       />
