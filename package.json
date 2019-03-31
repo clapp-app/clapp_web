@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
-    "deploy": "parcel build --out-dir docs --public-url https://clapp-app.github.io/clapp_web/ src/index.html"
+    "deploy": "parcel build --out-dir docs --public-url /clapp_web/ src/index.html"
   },
   "repository": {
     "type": "git",
