@@ -35,21 +35,34 @@ const Circle = posed.div({
 const ClappButton = () => {
   const [pressed, setPressed] = useState(false)
   const [hidden, setHidden] = useState(true)
+  const [touch, setTouch] = useState(false)
 
   useEffect(() => {
     loadSounds().then(() => setHidden(false))
   })
 
-  function pointerDown() {
+  function touchStart() {
+    setTouch(true)
     setPressed(true)
     playSounds()
   }
 
-  function pointerUp() {
+  function touchEnd() {
     setPressed(false)
   }
 
-  function pointerLeave() {
+  function mouseDown() {
+    if (!touch) {
+      setPressed(true)
+      playSounds()
+    }
+  }
+
+  function mouseUp() {
+    setPressed(false)
+  }
+
+  function mouseLeave() {
     setPressed(false)
   }
 
@@ -65,9 +78,11 @@ const ClappButton = () => {
     <>
       <img className={styles.spinner} src={loader} />
       <Circle
-        onPointerDown={() => pointerDown()}
-        onPointerUp={() => pointerUp()}
-        onPointerLeave={() => pointerLeave()}
+        onTouchStart={() => touchStart()}
+        onTouchEnd={() => touchEnd()}
+        onMouseDown={() => mouseDown()}
+        onMouseUp={() => mouseUp()}
+        onMouseLeave={() => mouseLeave()}
         pose={pose}
         className={styles.circle}
       />
