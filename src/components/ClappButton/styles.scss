@@ -1,0 +1,17 @@
+@import '../../style/colors';
+
+.circle {
+  background-color: $color-light;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.circle > img {
+  width: 250px;
+  height: 250px;
+  transform: translate(6%, 10%);
+}

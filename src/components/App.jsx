@@ -1,5 +1,11 @@
 import React from 'react'
+import Contain from './Contain'
+import ClappButton from './ClappButton'
 
-const App = () => <h1>Hello Clapp!</h1>
+const App = () => (
+  <Contain>
+    <ClappButton />
+  </Contain>
+)
 
 export default App
