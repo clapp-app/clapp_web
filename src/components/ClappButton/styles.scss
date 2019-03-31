@@ -12,3 +12,20 @@
   background-repeat: no-repeat;
   background-position: 25%, center;
 }
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: spin 2s linear 0s infinite;
+  z-index: -1;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg) scale(5);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg) scale(5);
+  }
+}
