@@ -99,7 +99,7 @@ const ClappButton = () => {
     <>
       <Message message={'Press to start'} hidden={hidden || soundsLoaded} />
       <Spinner
-        pose={soundsLoaded ? 'hidden' : 'default'}
+        pose={!hidden || soundsLoaded ? 'hidden' : 'default'}
         className={styles.spinner}
         src={loader}
       />
