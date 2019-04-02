@@ -1,0 +1,11 @@
+@import '../../style/fonts';
+@import '../../style/colors';
+
+.message {
+  font-family: $font-primary;
+  text-align: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: darken($color-primary, 50);
+}

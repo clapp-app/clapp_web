@@ -3,10 +3,20 @@ import posed from 'react-pose'
 import { easing } from 'popmotion'
 import styles from './styles'
 import loader from './loader.svg'
-import { loadSounds, playSounds } from '../../audio'
+import { loadSounds, playSounds, debugSounds } from '../../audio'
+import Message from '../Message'
 
 const { cubicBezier } = easing
 const materialEasing = cubicBezier(0.25, 0.8, 0.25, 1)
+
+const Spinner = posed.img({
+  hidden: {
+    opacity: 0
+  },
+  default: {
+    opacity: 1
+  }
+})
 
 const Circle = posed.div({
   hidden: {
@@ -34,12 +44,23 @@ const Circle = posed.div({
 
 const ClappButton = () => {
   const [pressed, setPressed] = useState(false)
-  const [hidden, setHidden] = useState(true)
+  const [hidden, setHidden] = useState(false)
   const [touch, setTouch] = useState(false)
+  const [soundsLoaded, setSoundsLoaded] = useState(false)
 
-  useEffect(() => {
-    loadSounds().then(() => setHidden(false))
-  })
+  function pointerDown() {
+    if (!soundsLoaded) {
+      setHidden(true)
+      loadSounds()
+        .then(() => {
+          setSoundsLoaded(true)
+          setHidden(false)
+        })
+        .catch(() => {
+          //TODO: implement error page
+        })
+    }
+  }
 
   function touchStart() {
     setTouch(true)
@@ -76,13 +97,19 @@ const ClappButton = () => {
 
   return (
     <>
-      <img className={styles.spinner} src={loader} />
+      <Message message={'Press to start'} hidden={hidden || soundsLoaded} />
+      <Spinner
+        pose={soundsLoaded ? 'hidden' : 'default'}
+        className={styles.spinner}
+        src={loader}
+      />
       <Circle
         onTouchStart={() => touchStart()}
         onTouchEnd={() => touchEnd()}
         onMouseDown={() => mouseDown()}
         onMouseUp={() => mouseUp()}
         onMouseLeave={() => mouseLeave()}
+        onPointerDown={() => pointerDown()}
         pose={pose}
         className={styles.circle}
       />

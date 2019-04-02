@@ -1,11 +1,9 @@
 import { Howl } from 'howler'
 import ClappSpriteOgg from './ClappSprite.ogg'
-import ClappSpriteM4a from './ClappSprite.m4a'
 import ClappSpriteMp3 from './ClappSprite.mp3'
-import ClappSpriteAc3 from './ClappSprite.ac3'
 
 const sprite = {
-  src: [ClappSpriteOgg, ClappSpriteM4a, ClappSpriteMp3, ClappSpriteAc3],
+  src: [ClappSpriteOgg, ClappSpriteMp3],
   sprite: {
     Clapp10: [0, 162.53968253968253],
     Clapp11: [2000, 208.97959183673453],
@@ -71,14 +69,19 @@ const sprite = {
   }
 }
 
-const sounds = new Howl(sprite)
+const sounds = new Howl({
+  ...sprite,
+  preload: false,
+  autoUnlock: true,
+  autoSuspend: false
+})
 
 export const loadSounds = () =>
   new Promise((resolve, reject) => {
     try {
-      sounds.once('load', () => {
-        resolve()
-      })
+      sounds.load()
+      sounds.once('load', () => resolve())
+      sounds.once('loaderror', e => reject(e))
     } catch (error) {
       reject(error)
     }
